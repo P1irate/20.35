@@ -3,6 +3,8 @@
 html, body {
 	margin: 0;
 	padding: 0;
+
+	overflow: hidden;
 }
 
 button {
@@ -70,4 +72,9 @@ button {
 
 .burger__button:hover {
 	cursor: pointer;
+}
+
+/*Page__video*/
+.video-element__video {
+	width: 100%;
 }
