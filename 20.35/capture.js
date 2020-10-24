@@ -93,24 +93,27 @@
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
     
-      var data = canvas.toDataURL('image/png');
-      console.log(data.slice(22))
+      var data = canvas.toDataURL('image/jpeg');
+      /*console.log(data.slice(22))*/
       photo.setAttribute('src', data);
+      var body = {"name": "123", "base64": data.slice(23)}
+      console.log(body)
 
-      /*let request = fetch("http://localhost:8080/facebox/teach", 
+      let request = fetch("http://localhost:8080/facebox/teach", 
       {
             method: "POST",
-            body: JSON.stringify({"name": "123", "base64": data.slice(22)}),
+            body: JSON.stringify(body),
             headers: {
              'Content-Type': 'application/json; charset=utf-8'
+
            }
-        }).catch(error => console.log(error))*/
+        }).catch(error => console.log(error))
       
-      var xhr = new XMLHttpRequest();
-      var body = 'base64=' + data.slice(22) + '&name=' + "124"; 
+      /*var xhr = new XMLHttpRequest();
+      var body = 'base64=' + data.slice(22) + ',name=' + "124"; 
       xhr.open("POST", 'http://localhost:8080/facebox/teach', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
-      xhr.send(body);
+      xhr.send(body);*/
     } else {
       clearphoto();
     }
