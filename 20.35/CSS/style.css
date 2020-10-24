@@ -1,3 +1,30 @@
-h1 {
-	color:red;
+/*CSS-сброс*/
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
+
+:root {
+	--accent-color: #C8CF8B;
+	--primary-color: #FFFFFF;
+	--secondary-color: #3F3D52;
+}
+
+
+.page {
+	display: flex;
+}
+
+.page__menu {
+	max-width: 580px;
+}
+
+.page__video {
+	flex: 1;
+	background-color: var(--secondary-color);
+}
+
+
+/*Page__menu*/
+
