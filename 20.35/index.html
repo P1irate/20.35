@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Ахуенный проект</title>
-		<link rel="stylesheet" type="text/css" href="CSS/style.css">
-		<script src ="node_modules/jquery/dist/jquery.min.js "></script>
-		<script type="text/javascript" src="face-verify.js"></script>
-	</head>
-	<body>
-		<h1>Я заголовок</h1>
-		<video autoplay ="true" id = "videoElement"></video>
-		<script type="text/javascript">
-			var video = document.querySelector("#videoElement");
-			if (navigator.mediaDevices.getUserMedia) {
-				navigator.mediaDevices.getUserMedia({ video: true })
-    			.then(function (stream) {
-      			video.srcObject = stream;
-      			var fv = new machinebox.FaceVerify({
-		facebox: "http://localhost:8080",
-		videoSelector: '#videoElement',
-		snapshotInterval: 1000,
-		
-		onSecure: function(name){
-			console.log("onSecure")
-		},
-		onInsecure: function(message){
-			console.log("onInsecure")
-		},
-		error: function(error) {
-			console.log("Error " , error)
-		},
-	})
-	fv.start()
-    		})
-    		.catch(function (err0r) {
-      		console.log("Something went wrong!");
-    		});
-			}
-		</script>
+<head>
+  <meta charset="utf-8">
+  <title>20.35 проект</title>
+  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+  <script src ="node_modules/jquery/dist/jquery.min.js "></script>
+  <script type="text/javascript" src="face-verify.js"></script>
+</head>
+<body>
 
-	</body>
+<div class="page">
+  <div class="page__menu menu">
+    <div class="menu__burger burger">
+      <button class="burger__button">
+        <span class="burger__icon"></span>
+      </button>
+    </div>
+
+    <div class="menu__description">
+      <div class="menu__look">
+        <p class="menu__p">Посмотрите, пожалуйста, в камеру</p>
+      </div>
+
+      <div class="menu__face face">
+        <img src="assets/icons/face.svg" class="face__img"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="page__video video-element">
+    <video autoplay="true" id="videoElement" class="video-element__video"></video>
+  </div>
+</div>
+
+<script type="text/javascript">
+    let video = document.querySelector("#videoElement");
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                let fv = new machinebox.FaceVerify({
+                    facebox: "http://localhost:8080",
+                    videoSelector: '#videoElement',
+                    snapshotInterval: 1000,
+
+                    onSecure: function(name){
+                        console.log("onSecure")
+                    },
+                    onInsecure: function(message){
+                        console.log("onInsecure")
+                    },
+                    error: function(error) {
+                        console.log("Error " , error)
+                    },
+                })
+                fv.start()
+            })
+            .catch(function (err0r) {
+                console.log("Something went wrong!");
+            });
+    }
+</script>
+
+</body>
 </html>

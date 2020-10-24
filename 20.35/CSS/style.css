@@ -1,3 +1,80 @@
-h1 {
-	color:red;
+/*CSS-сброс*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+
+	overflow: hidden;
+}
+
+button {
+	outline: none;
+	background: none;
+	border: none;
+}
+
+:root {
+	--accent-color: #C8CF8B;
+	--primary-color: #FFFFFF;
+	--secondary-color: #3F3D52;
+}
+
+
+.page {
+	display: flex;
+	min-height: 100vh;
+}
+
+.page__menu {
+	max-width: 280px;
+	background-color: var(--accent-color);
+
+	padding: 32px 115px 185px 121px;
+}
+
+.page__video {
+	flex: 1;
+	background-color: var(--secondary-color);
+}
+
+
+/*Page__menu*/
+.menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+}
+
+.menu__p {
+	color: var(--primary-color);
+	font-size: 48px;
+	font-family: sans-serif;
+}
+
+.menu__description {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.face__img {
+	max-width: 100%;
+}
+
+.burger__icon {
+	display: inline-block;
+	width: 103px;
+	height: 92px;
+
+	background: url("../assets/icons/burger.svg") no-repeat center center;
+}
+
+.burger__button:hover {
+	cursor: pointer;
+}
+
+/*Page__video*/
+.video-element__video {
+	width: 100%;
 }
