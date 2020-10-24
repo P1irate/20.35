@@ -35,6 +35,8 @@ button {
 .page__video {
 	flex: 1;
 	background-color: var(--secondary-color);
+
+	position: relative;
 }
 
 
@@ -77,4 +79,28 @@ button {
 /*Page__video*/
 .video-element__video {
 	width: 100%;
+
+	position: relative;
+	z-index: 3;
+}
+
+.video-element__take-photo {
+	position: absolute;
+
+	z-index: 9999;
+	color: var(--primary-color);
+	top: 15px;
+	left: 15px;
+
+	padding: 10px 15px;
+	border: 2px solid var(--accent-color);
+
+	transition: all .2s ease-in;
+}
+
+.video-element__take-photo:hover {
+	background-color: var(--accent-color);
+	color: var(--secondary-color);
+
+	cursor: pointer;
 }

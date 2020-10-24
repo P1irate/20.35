@@ -1,65 +1,27 @@
-<!--- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Display Webcam Stream</title>
- 
-<style>
-#container {
-	margin: 0px auto;
-	width: 500px;
-	height: 375px;
-	border: 10px #333 solid;
-}
-#videoElement {
-	width: 500px;
-	height: 375px;
-	background-color: #666;
-}
-</style>
-
-</head>
- 
-<body>
-<video autoplay="true" id="videoElement"></video>
-<div id="container">
-	
-</div>
-<script>
-var video = document.querySelector("#videoElement");
-
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
-}
-</script>
-</body>
-</html>-->
 <!doctype html>
 <html>
 <head>
-	<title>WebRTC: Still photo capture demo</title>
+	<title>Регистрация</title>
 	<meta charset='utf-8'>
-	<link rel="stylesheet" href="main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="CSS/style.css" type="text/css" media="all">
 	<script src="capture.js">
 	</script>
 </head>
 <body>
-<div class="contentarea">
-	
-  <div class="camera">
-    <video id="video">Video stream not available.</video>
-    <button id="startbutton">Take photo</button> 
+
+<div class="page">
+  <div class="page__menu menu">
+    <div class="menu__burger burger">
+      <button class="burger__button">
+        <span class="burger__icon"></span>
+      </button>
+    </div>
   </div>
-  <canvas id="canvas">
-  </canvas>
-  <div class="output">
-    <img id="photo" alt="The screen capture will appear in this box."> 
+
+  <div class="page__video video-element">
+    <video id="video" class="video-element__video">Video stream not available.</video>
+    <canvas id="canvas" class="video-element__canvas"></canvas>
+    <button id="startbutton" class="video-element__take-photo">Сфотографировать</button>
   </div>
 </div>
 </body>

@@ -22,7 +22,6 @@
   function startup() {
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
-    photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
 
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
@@ -37,18 +36,18 @@
     video.addEventListener('canplay', function(ev){
       if (!streaming) {
         height = video.videoHeight / (video.videoWidth/width);
-      
+
         // Firefox currently has a bug where the height can't be read from
         // the video, so we will make assumptions if this happens.
-      
+
         if (isNaN(height)) {
           height = width / (4/3);
         }
-      
-        video.setAttribute('width', width);
-        video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
+
+        // video.setAttribute('width', width);
+        // video.setAttribute('height', height);
+        // canvas.setAttribute('width', width);
+        // canvas.setAttribute('height', height);
         streaming = true;
       }
     }, false);
@@ -57,8 +56,6 @@
       takepicture();
       ev.preventDefault();
     }, false);
-    
-    clearphoto();
   }
 
   // Fill the photo with an indication that none has been
@@ -71,15 +68,6 @@
     xhr.send(body);
   }
 
-  function clearphoto() {
-    var context = canvas.getContext('2d');
-    context.fillStyle = "#AAA";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
-  }
-  
   // Capture a photo by fetching the current contents of the video
   // and drawing it into a canvas, then converting that to a PNG
   // format data URL. By drawing it on an offscreen canvas and then
@@ -92,14 +80,14 @@
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
-    
+
       var data = canvas.toDataURL('image/jpeg');
       /*console.log(data.slice(22))*/
       photo.setAttribute('src', data);
       var body = {"name": "123", "base64": data.slice(23)}
       console.log(body)
 
-      let request = fetch("http://localhost:8080/facebox/teach", 
+      let request = fetch("http://localhost:8080/facebox/teach",
       {
             method: "POST",
             body: JSON.stringify(body),
@@ -108,9 +96,9 @@
 
            }
         }).catch(error => console.log(error))
-      
+
       /*var xhr = new XMLHttpRequest();
-      var body = 'base64=' + data.slice(22) + ',name=' + "124"; 
+      var body = 'base64=' + data.slice(22) + ',name=' + "124";
       xhr.open("POST", 'http://localhost:8080/facebox/teach', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
       xhr.send(body);*/
