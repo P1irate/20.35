@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Ахуенный проект</title>
-		<link rel="stylesheet" type="text/css" href="CSS/style.css">
-		<script src ="node_modules/jquery/dist/jquery.min.js "></script>
-		<script type="text/javascript" src="face-verify.js"></script>
-	</head>
-	<body>
-		<h1>Я заголовок</h1>
-		<video autoplay ="true" id = "videoElement"></video>
-		<script type="text/javascript">
-			var video = document.querySelector("#videoElement");
-			if (navigator.mediaDevices.getUserMedia) {
-				navigator.mediaDevices.getUserMedia({ video: true })
-    			.then(function (stream) {
-      			video.srcObject = stream;
-      			var fv = new machinebox.FaceVerify({
-		facebox: "http://localhost:8080",
-		videoSelector: '#videoElement',
-		snapshotInterval: 1000,
-		
-		onSecure: function(name){
-			console.log("onSecure")
-		},
-		onInsecure: function(message){
-			console.log("onInsecure")
-		},
-		error: function(error) {
-			console.log("Error " , error)
-		},
-	})
-	fv.start()
-    		})
-    		.catch(function (err0r) {
-      		console.log("Something went wrong!");
-    		});
-			}
-		</script>
+<head>
+  <meta charset="utf-8">
+  <title>Ахуенный проект</title>
+  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+  <script src ="node_modules/jquery/dist/jquery.min.js "></script>
+  <script type="text/javascript" src="face-verify.js"></script>
+</head>
+<body>
+<h1>Я заголовок</h1>
+<video autoplay="true" id="videoElement"></video>
+<script type="text/javascript">
+    var video = document.querySelector("#videoElement");
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                var fv = new machinebox.FaceVerify({
+                    facebox: "http://localhost:8080",
+                    videoSelector: '#videoElement',
+                    snapshotInterval: 1000,
 
-	</body>
+                    onSecure: function(name){
+                        console.log("onSecure")
+                    },
+                    onInsecure: function(message){
+                        console.log("onInsecure")
+                    },
+                    error: function(error) {
+                        console.log("Error " , error)
+                    },
+                })
+                fv.start()
+            })
+            .catch(function (err0r) {
+                console.log("Something went wrong!");
+            });
+    }
+</script>
+
+</body>
 </html>
