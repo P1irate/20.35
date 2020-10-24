@@ -82,8 +82,6 @@
       context.drawImage(video, 0, 0, width, height);
 
       var data = canvas.toDataURL('image/jpeg');
-      /*console.log(data.slice(22))*/
-      photo.setAttribute('src', data);
       var body = {"name": "123", "base64": data.slice(23)}
       console.log(body)
 
